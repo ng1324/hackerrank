@@ -1,0 +1,40 @@
+#Migratory Birds
+#O(n + mlogm)
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'migratoryBirds' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts INTEGER_ARRAY arr as parameter.
+#
+
+def migratoryBirds(arr):
+    dic = {}
+    for item in arr:
+        dic[item] = dic.get(item, 0) + 1
+    dic_item = dic.items()
+    sorted_items = sorted(dic_item, key = lambda x: x[0])
+    sorted_items = sorted(sorted_items, key = lambda x: x[1], reverse = True)
+    
+    return sorted_items[0][0]
+    
+        
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    arr_count = int(input().strip())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    result = migratoryBirds(arr)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()

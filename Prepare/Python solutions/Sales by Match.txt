@@ -1,0 +1,41 @@
+#Sales by Match
+#O(n)
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'sockMerchant' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts following parameters:
+#  1. INTEGER n
+#  2. INTEGER_ARRAY ar
+#
+
+def sockMerchant(n, ar):
+    dic = {}
+    pair_count = 0
+    for i in range(n):
+        sock_colour = ar[i]
+        dic[sock_colour] = dic.get(sock_colour, 0) + 1
+        if dic[sock_colour] == 2:
+            dic[sock_colour] = 0
+            pair_count += 1
+    return pair_count
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    ar = list(map(int, input().rstrip().split()))
+
+    result = sockMerchant(n, ar)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()

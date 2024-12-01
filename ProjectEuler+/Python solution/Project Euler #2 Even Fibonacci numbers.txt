@@ -1,0 +1,32 @@
+#Project Euler #2: Even Fibonacci numbers
+# O(n) solution
+
+import sys
+
+
+t = int(input().strip())
+all_n =  []
+for a0 in range(t):
+    all_n.append(int(input().strip()))
+    
+fib = [1,2]
+current = 0
+largest_n = max(all_n)
+counter = 2
+
+while (True):
+    current = fib[counter-1] + fib[counter-2]
+    if current > largest_n:
+        break
+    fib.append(current)
+    counter += 1;
+    
+for item in all_n:
+    result = 0
+    for fib_n in fib:
+        if fib_n <= item:
+            if fib_n % 2 == 0:
+                result += fib_n
+        else:
+            break
+    print(result)
